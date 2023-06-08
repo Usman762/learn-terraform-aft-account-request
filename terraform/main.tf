@@ -53,3 +53,31 @@ module "second_account" {
 
   account_customizations_name = "sandbox-aft-account"
 }
+
+module "third_account" {
+  source = "./modules/aft-account-request"
+
+  control_tower_parameters = {
+    AccountEmail              = "usmanzahid-dev@copebit.ch"
+    AccountName               = "third-aft"
+    ManagedOrganizationalUnit = "Demo"
+    SSOUserEmail              = "usmanzahid-dev@copebit.ch"
+    SSOUserFirstName          = "Third"
+    SSOUserLastName           = "AFT"
+  }
+
+  account_tags = {
+    "Learn Tutorial" = "AFT-2nd"
+  }
+
+  change_management_parameters = {
+    change_requested_by = "Usman Zahid"
+    change_reason       = "Provisiong Third Account"
+  }
+
+  custom_fields = {
+    group = "prod"
+  }
+
+  account_customizations_name = "sandbox-aft-third-account"
+}
